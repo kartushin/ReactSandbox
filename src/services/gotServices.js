@@ -37,18 +37,18 @@ export default class GotService {
     return this._transformBook(book);
   }
 
-  isSet(data) {
+  isSet = (data) => {
     if (data) {
       return data;
     } else {
       return "unknown";
     }
-  }
+  };
 
   _transformCharacter(char) {
     return {
-      name: this.isSet(char.name),
-      gender: this.isSet(char.gender),
+      name: char.name,
+      gender: char.gender,
       born: char.born,
       died: char.died,
       culture: char.culture
