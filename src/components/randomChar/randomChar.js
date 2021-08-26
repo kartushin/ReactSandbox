@@ -34,6 +34,7 @@ export default class RandomChar extends Component {
   }
 
   componentWillUnmount() {
+    console.log("componentWillUnmount"); // то работает то нет
     clearInterval(this.timerId);
   }
 
@@ -45,6 +46,7 @@ export default class RandomChar extends Component {
   };
 
   onError = (err) => {
+    //к чему тут err стоит толком не объяснено
     this.setState = {
       error: true,
       loading: false
@@ -53,7 +55,7 @@ export default class RandomChar extends Component {
 
   updateChar = () => {
     const id = Math.floor(Math.random() * 140 + 25);
-    //const id = 130000;
+    //const id = 130000; // вызов ошибки
     this.gotService
       .getCharacter(id)
       .then(this.onCharLoaded)
@@ -63,9 +65,9 @@ export default class RandomChar extends Component {
   render() {
     console.log("render");
     const { char, loading, error } = this.state;
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? <View char={char} /> : null;
+    const errorMessage = error ? <ErrorMessage /> : null; // что-то не так с условием
+    const spinner = loading ? <Spinner /> : null; // что-то не так с условием
+    const content = !(loading || error) ? <View char={char} /> : null; // что-то не так с условием
 
     return (
       <RandomBlock>
