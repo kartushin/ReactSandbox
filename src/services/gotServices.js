@@ -50,34 +50,34 @@ export default class GotService {
     return item.url.match(idRegExp)[1];
   };
 
-  _transformCharacter(char) {
+  _transformCharacter = (char) => {
     return {
       id: this._extractId(char),
-      name: char.name,
-      gender: char.gender,
-      born: char.born,
-      died: char.died,
-      culture: char.culture
+      name: this.isSet(char.name),
+      gender: this.isSet(char.gender),
+      born: this.isSet(char.born),
+      died: this.isSet(char.died),
+      culture: this.isSet(char.culture)
     };
-  }
-  _transformHouses(house) {
+  };
+  _transformHouse = (house) => {
     return {
       id: this._extractId(house),
-      name: house.name,
-      region: house.region,
-      words: house.words,
-      titles: house.titles,
-      overlord: house.overlord,
-      ancestralWeapons: house.ancestralWeapons
+      name: this.isSet(house.name),
+      region: this.isSet(house.region),
+      words: this.isSet(house.words),
+      titles: this.isSet(house.titles),
+      ancestralWeapons: this.isSet(house.ancestralWeapons)
     };
-  }
-  _transformBook(book) {
+  };
+
+  _transformBook = (book) => {
     return {
       id: this._extractId(book),
-      name: book.name,
-      numberOfPages: book.numberOfPages,
-      publiser: book.publiser,
-      released: book.released
+      name: this.isSet(book.name),
+      numberOfPages: this.isSet(book.numberOfPages),
+      publisher: this.isSet(book.publisher),
+      released: this.isSet(book.released)
     };
-  }
+  };
 }
